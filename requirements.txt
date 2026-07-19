@@ -1,0 +1,15 @@
+numpy==1.26.4
+torch
+torchvision
+scikit-learn
+rembg==2.0.55
+onnxruntime
+pillow
+opencv-python-headless
+tqdm
+h5py
+scipy
+pycolmap
+# HLOC is installed from source:
+#   git clone --recursive https://github.com/cvg/Hierarchical-Localization
+#   pip install -e Hierarchical-Localization

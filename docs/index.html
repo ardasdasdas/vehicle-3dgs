@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Multi-Stage Pipeline for 3D Reconstruction of Vehicles</title>
+
+  <!-- Bulma CSS + Font Awesome (same stack as the Nerfies template) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+
+  <style>
+    body { font-family: 'Noto Sans', sans-serif; }
+    .hero-title { font-family: 'Google Sans', sans-serif; }
+    .publication-title { font-weight: 600; }
+    .author-block { margin-right: 0.5rem; }
+    .section { padding: 3rem 1.5rem; }
+    .abstract-text { text-align: justify; line-height: 1.7; }
+    .gallery img { border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.12); width: 100%; }
+    pre { border-radius: 8px; }
+    .link-button { margin: 0.25rem; }
+    footer { padding: 2rem; }
+    .placeholder-box {
+      border: 2px dashed #b5b5b5; border-radius: 10px; padding: 3rem 1rem;
+      text-align: center; color: #888; background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================== HERO / TITLE ===================== -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="title is-2 hero-title publication-title">
+        A Multi-Stage Pipeline for 3D Reconstruction of Vehicles<br>
+        from Heterogeneous Multi-View Images
+      </h1>
+
+      <div class="is-size-5 publication-authors" style="margin-top: 1rem;">
+        <span class="author-block">
+          <a href="https://orcid.org/0009-0009-0537-7003">Muzaffer Arda Uslu</a>,
+        </span>
+        <span class="author-block">
+          <a href="https://orcid.org/0000-0001-6728-4050">Selcan Kaplan Berkaya</a>
+        </span>
+      </div>
+
+      <div class="is-size-6 publication-affiliation" style="margin-top: 0.5rem; color:#555;">
+        Eskişehir Technical University
+      </div>
+
+      <div class="is-size-6" style="margin-top: 0.5rem; color:#555;">
+        Erciyes University Journal of the Institute of Science and Technology, Vol. 42, No. 2 (2026)
+      </div>
+
+      <!-- ===== Link buttons ===== -->
+      <div class="publication-links" style="margin-top: 1.5rem;">
+        <a class="button is-dark is-rounded link-button"
+           href="https://doi.org/10.65520/erciyesfen.1918173">
+          <span class="icon"><i class="fas fa-file-pdf"></i></span>
+          <span>Paper</span>
+        </a>
+        <a class="button is-dark is-rounded link-button"
+           href="https://dergipark.org.tr/en/download/article-file/5855664">
+          <span class="icon"><i class="fas fa-file-lines"></i></span>
+          <span>PDF</span>
+        </a>
+        <a class="button is-dark is-rounded link-button"
+           href="https://huggingface.co/datasets/muzafferardauslu/vehicle-3dgs">
+          <span class="icon">🤗</span>
+          <span>Dataset</span>
+        </a>
+        <a class="button is-dark is-rounded link-button"
+           href="https://github.com/USERNAME/REPO">
+          <span class="icon"><i class="fab fa-github"></i></span>
+          <span>Code</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TEASER VIDEO ===================== -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="has-text-centered">
+      <video autoplay muted loop playsinline
+             style="width:100%; max-width:960px; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.15);">
+        <source src="static/teaser.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p class="is-size-6" style="margin-top:0.75rem; color:#666;">
+        3D Gaussian Splatting reconstructions produced for 100+ distinct vehicle classes.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABSTRACT ===================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content abstract-text">
+          <p>
+            Three-dimensional (3D) reconstruction of vehicles remains a challenging task,
+            particularly when aiming to generate standardized models from multiple samples of the
+            same make, model, body type, and year. While traditional Structure-from-Motion
+            approaches excel at reconstructing individual objects, they struggle to create
+            generalized models from diverse multi-view datasets exhibiting variations in lighting,
+            background, and appearance. This study presents a novel automated pipeline for
+            standardized 3D vehicle reconstruction.
+          </p>
+          <p>
+            The proposed methodology employs a three-stage approach: (1) preprocessing with
+            background removal and adaptive histogram equalization to isolate vehicle regions and
+            normalize illumination; (2) deep learning-based orientation classification using an
+            EfficientNet-B0 architecture to categorize images into eight directional views; and
+            (3) sparse reconstruction via hierarchical localization and COLMAP with a
+            neighbor-based image pairing strategy. Applied to a heterogeneous, multi-source
+            collection, the pipeline successfully generated 3D Gaussian Splatting models for over a
+            hundred distinct vehicle classes &mdash; one of the first publicly available datasets of
+            vehicle-class-specific 3D Gaussian Splatting reconstructions derived from
+            heterogeneous multi-source collections.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== METHOD / PIPELINE ===================== -->
+<section class="section" style="background:#fafafa;">
+  <div class="container is-max-desktop">
+    <div class="has-text-centered">
+      <h2 class="title is-3">Pipeline</h2>
+      <figure class="image" style="margin-top:1.5rem;">
+        <img src="static/pipeline.png" alt="Pipeline overview"
+             style="border-radius:10px; box-shadow:0 2px 12px rgba(0,0,0,0.12);">
+      </figure>
+      <div class="columns" style="margin-top:2rem;">
+        <div class="column">
+          <span class="icon is-large"><i class="fas fa-image fa-2x"></i></span>
+          <h3 class="title is-5">1. Preprocessing</h3>
+          <p>Background removal (rembg) + CLAHE to isolate the vehicle and normalize lighting.</p>
+        </div>
+        <div class="column">
+          <span class="icon is-large"><i class="fas fa-compass fa-2x"></i></span>
+          <h3 class="title is-5">2. Orientation</h3>
+          <p>EfficientNet-B0 classifies each image into one of eight directional views.</p>
+        </div>
+        <div class="column">
+          <span class="icon is-large"><i class="fas fa-cube fa-2x"></i></span>
+          <h3 class="title is-5">3. Reconstruction</h3>
+          <p>HLOC (SuperPoint + SuperGlue) + COLMAP with neighbor-based pairing, then 3DGS.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RESULTS GALLERY ===================== 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="has-text-centered">
+      <h2 class="title is-3">Results</h2>
+      <p class="is-size-6" style="color:#666; margin-bottom:1.5rem;">
+        Replace the boxes below with renders / GIFs of your reconstructed vehicles
+        (e.g. <code>static/render1.png</code>).
+      </p>
+      <div class="columns is-multiline gallery">
+        <div class="column is-one-third"><div class="placeholder-box">render 1</div></div>
+        <div class="column is-one-third"><div class="placeholder-box">render 2</div></div>
+        <div class="column is-one-third"><div class="placeholder-box">render 3</div></div>
+        <div class="column is-one-third"><div class="placeholder-box">render 4</div></div>
+        <div class="column is-one-third"><div class="placeholder-box">render 5</div></div>
+        <div class="column is-one-third"><div class="placeholder-box">render 6</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- ===================== BIBTEX ===================== -->
+<section class="section" style="background:#fafafa;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">BibTeX</h2>
+    <pre><code>@article{uslu2026multistage,
+  title   = {A Multi-Stage Pipeline for 3D Reconstruction of Vehicles from Heterogeneous Multi-View Images},
+  author  = {Uslu, Muzaffer Arda and Kaplan Berkaya, Selcan},
+  journal = {Erciyes {\"U}niversitesi Fen Bilimleri Enstit{\"u}s{\"u} Fen Bilimleri Dergisi},
+  volume  = {42},
+  number  = {2},
+  year    = {2026},
+  doi     = {10.65520/erciyesfen.1918173}
+}
+
+@inproceedings{yang2015compcars,
+  title     = {A Large-Scale Car Dataset for Fine-Grained Categorization and Verification},
+  author    = {Yang, Linjie and Luo, Ping and Loy, Chen Change and Tang, Xiaoou},
+  booktitle = {IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2015}
+}</code></pre>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer has-text-centered">
+  <div class="content">
+    <p>
+      The dataset is derived from the
+      <a href="https://mmlab.ie.cuhk.edu.hk/datasets/comp_cars/">CompCars</a> dataset and released
+      for non-commercial research with permission. This page template is based on
+      <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
