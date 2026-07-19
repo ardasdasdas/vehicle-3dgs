@@ -1,5 +1,7 @@
 # Multi-Stage 3D Vehicle Reconstruction Pipeline
 
+🌐 **[Project Page](https://ardasdasdas.github.io/vehicle-3dgs/)** &nbsp;|&nbsp; 📄 [Paper](https://doi.org/10.65520/erciyesfen.1918173) &nbsp;|&nbsp; 🤗 [Dataset](https://huggingface.co/datasets/muzafferardauslu/vehicle-3dgs)
+
 Code for the paper **"A Multi-Stage Pipeline for 3D Reconstruction of Vehicles from
 Heterogeneous Multi-View Images"** (Uslu & Kaplan Berkaya, 2026). DOI: https://doi.org/10.65520/erciyesfen.1918173
 
