@@ -1,7 +1,7 @@
 # Multi-Stage 3D Vehicle Reconstruction Pipeline
 
 Code for the paper **"A Multi-Stage Pipeline for 3D Reconstruction of Vehicles from
-Heterogeneous Multi-View Images"** (Uslu & Kaplan Berkaya, 2026).
+Heterogeneous Multi-View Images"** (Uslu & Kaplan Berkaya, 2026). DOI: https://doi.org/10.65520/erciyesfen.1918173
 
 The pipeline turns heterogeneous, multi-source vehicle images into 3D Gaussian Splatting
 reconstructions through three stages:
